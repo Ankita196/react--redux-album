@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection:"row"
   },
   paper: {
-    height:340,
+    height:380,
     width:270,
     backgroundColor:"#212121",
    padding:10
