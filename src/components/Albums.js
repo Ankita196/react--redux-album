@@ -5,6 +5,13 @@ import { setAlbums } from "../redux/actions/albumsActions";
 import Album from "./Album";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +65,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Albums = () => {
    const classes = useStyles();
-
+   const searchHandler = e => {
+    const val = e.target.value
+    setInput(val)
+  
+  }
+  const search = (e) => {
+   e.preventDefault();
+    setAlbums(
+      data.filter(album => album.artist.toLowerCase() === input.toLowerCase() || album.album_title.toLowerCase() === input.toLowerCase()
+      )
+    )
+  }
   const albums = useSelector((state) => state.allAlbums.albums);
   const dispatch = useDispatch();
   const fetchAlbums = async () => {
@@ -76,13 +94,47 @@ const Albums = () => {
 
   console.log("Albums :", albums);
   return (
-    <div>
+   
+      <div >
+    <br/><br/><br/><br/>
+    <div >
+    <div className={classes.div1}>
+    <div >
+     <Typography className={classes.album}><span className={classes.album1}>Music </span> for Everyone</Typography> 
+     </div>
+     <div>
+      <Paper component="form" className={classes.root1}>
+      
+      <InputBase
+        className={classes.input}
+        placeholder="Search Music here"
+        inputProps={{ 'aria-label': 'search Music here' }}
+      
+        onChange={searchHandler}
+      />
+      
+      <Divider className={classes.divider} orientation="vertical" />
+      <IconButton type="submit" className={classes.iconButton} aria-label="search">
+        <SearchIcon  onClick={search} />
+      </IconButton>
+     
+    </Paper>
+     </div>
+     
+     </div>
+      <div>
+     <br/>
+      <Grid container spacing={5}>
+     
     <Grid item
               xs={12}
               sm={3}
             className={classes.grid1}>
       <Album />
       </Grid>
+    </Grid>
+    </div>
+   </div>
     </div>
   );
 };
