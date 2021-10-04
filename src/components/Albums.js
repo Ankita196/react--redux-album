@@ -65,18 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Albums = () => {
    const classes = useStyles();
-   const searchHandler = e => {
-    const val = e.target.value
-    setInput(val)
-  
-  }
-  const search = (e) => {
-   e.preventDefault();
-    setAlbums(
-      data.filter(album => album.artist.toLowerCase() === input.toLowerCase() || album.album_title.toLowerCase() === input.toLowerCase()
-      )
-    )
-  }
+   
   const albums = useSelector((state) => state.allAlbums.albums);
   const dispatch = useDispatch();
   const fetchAlbums = async () => {
@@ -102,24 +91,7 @@ const Albums = () => {
     <div >
      <Typography className={classes.album}><span className={classes.album1}>Music </span> for Everyone</Typography> 
      </div>
-     <div>
-      <Paper component="form" className={classes.root1}>
-      
-      <InputBase
-        className={classes.input}
-        placeholder="Search Music here"
-        inputProps={{ 'aria-label': 'search Music here' }}
-      
-        onChange={searchHandler}
-      />
-      
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search">
-        <SearchIcon  onClick={search} />
-      </IconButton>
      
-    </Paper>
-     </div>
      
      </div>
       <div>
