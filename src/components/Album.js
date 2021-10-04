@@ -70,13 +70,14 @@ const Album = () => {
       <Grid item
       xs={12}
       sm={3}
+     
    >
       <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
       
        <Paper className={classes.paper}>
          
-         <Paper
+         <Paper 
        className={classes.image}
         style={{
           backgroundImage: `url('${img}')`,
