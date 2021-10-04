@@ -66,6 +66,11 @@ const Album = () => {
   const renderList = albums.map((album) => {
     const { id, img, movie, singer, song,title } = album;
     return (
+     
+      <Grid item
+      xs={12}
+      sm={3}
+   >
       <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
       
@@ -87,12 +92,14 @@ const Album = () => {
                   <Typography className={classes.name}>{singer}</Typography>
             
               </Paper>  
-             
+             </Grid>
       </Grid>
     </Grid>
+   
     );
   });
-  return <>{renderList}</>;
+  return <> <div style={{display:"flex",flexDirection:"row"}}>
+  <Grid container spacing={5}>{renderList}</Grid></div></>;
 };
 
 export default Album;

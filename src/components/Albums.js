@@ -97,10 +97,7 @@ const Albums = () => {
      </div>
       <div >
      <br/>
-     <Grid item
-              xs={12}
-              sm={3}
-           ><Album /> </Grid>
+    <Album /> 
     
     </div>
    </div>
