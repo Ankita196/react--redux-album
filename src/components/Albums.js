@@ -58,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
   },
   grid1:{
        marginLeft: 'auto',
-        alignItems: 'center'
+        alignItems: 'center',
+        
   }
 }));
 
@@ -94,17 +95,13 @@ const Albums = () => {
      
      
      </div>
-      <div>
+      <div >
      <br/>
-      <Grid container spacing={5}>
-     
-    <Grid item
+     <Grid item
               xs={12}
               sm={3}
-            className={classes.grid1}>
-      <Album />
-      </Grid>
-    </Grid>
+           ><Album /> </Grid>
+    
     </div>
    </div>
     </div>
