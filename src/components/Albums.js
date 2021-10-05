@@ -3,61 +3,27 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlbums } from '../redux/actions/albumsActions';
 import Album from './Album';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import styled from 'styled-components';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+const Title = styled.h1`
+  font-size: 30;
+  font-weight:bold;
+  text-align: center;
+  color: white;
+  fontFamily: sans-serif;
+`;
+const Span = styled.span`
+ color: pink;
+ 
+`;
 
-    display: 'flex',
-    flexDirection: 'row',
-  },
-
-  album: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-    textAlign: 'left',
-    marginLeft: 24,
-  },
-
-  root1: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    width: 400,
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-  },
-  iconButton: {
-    padding: 10,
-  },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
-  div1: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-  },
-  album1: {
-    color: 'pink',
-    fontSize: 40,
-  },
-  grid1: {
-    marginLeft: 'auto',
-    alignItems: 'center',
-  },
-}));
+const Div = styled.div`
+ display:flex;
+ justify-content:space-evenly;
+ 
+`;
 
 const Albums = () => {
-  const classes = useStyles();
-
   const albums = useSelector((state) => state.allAlbums.albums);
   const dispatch = useDispatch();
   const fetchAlbums = async () => {
@@ -84,13 +50,13 @@ const Albums = () => {
       <br />
       <br />
       <div>
-        <div className={classes.div1}>
+        <Div>
           <div>
-            <Typography className={classes.album}>
-              <span className={classes.album1}>Music </span> for Everyone
-            </Typography>
+            <Title>
+              <Span>Music </Span> for Everyone
+            </Title>
           </div>
-        </div>
+        </Div>
         <div>
           <br />
           <Album />
