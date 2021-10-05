@@ -2,48 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import IconButton from '@material-ui/core/IconButton';
 import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: 50,
-    display: 'flex',
-    flexDirection: 'row',
-  },
   paper: {
     height: 380,
     width: 270,
     backgroundColor: '#212121',
     padding: 10,
-  },
-
-  album: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-    textAlign: 'left',
-    marginLeft: 24,
-  },
-  name: {
-    color: '#bdbdbd',
-    fontSize: 17,
-    fontFamily: 'sans-serif',
-    textAlign: 'left',
-    marginLeft: 24,
-    textDecoration: 'underline',
-  },
-  image: {
-    height: 230,
-    width: 230,
-    marginTop: 40,
-    marginRight: 'auto',
-    marginLeft: 'auto',
   },
   icon: {
     color: 'green',
@@ -52,23 +21,40 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 130,
   },
 }));
-
-const Title = styled.h2`
-  font-size: 25;
+const Title = styled.h3`
+ color: 'white';
+  font-size: 30;
   font-weight:bold;
-  text-align: center;
-  color: white;
   fontFamily: sans-serif;
 `;
-
-const Title1 = styled.h3`
-  font-size: 15;
-  text-align: center;
-  color: white;
-  fontFamily: sans-serif;
-  text-decoration:underline;
-
+const Div = styled.div`
+display:flex;
+flex-direction:row;
 `;
+const Div1 = styled.div`
+height:230;
+    width:200;
+    marginTop:40;
+     margin-right: auto;
+    margin-left: auto;
+    background-size:100%;
+`;
+const Grid1 = styled.div`
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+
+    
+`;
+const Paper = styled.div`
+height:380;
+width:270;
+backgroundColor:"#212121";
+padding:10;
+
+    
+`;
+
 const Album = () => {
   const classes = useStyles();
 
@@ -77,40 +63,35 @@ const Album = () => {
     const { id, img, movie, singer, song, title } = album;
     return (
       <Grid item xs={12} sm={3}>
-        <Grid container className={classes.root} spacing={2}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Paper
-                className={classes.image}
-                style={{
-                  backgroundImage: `url('${img}')`,
-                  backgroundSize: '100% 100%',
-                  marginTop: 30,
-                }}
-              >
-                {' '}
-                <IconButton>
-                  <PlayCircleFilledIcon className={classes.icon} />
-                </IconButton>
-              </Paper>
+        <Grid1 container className="root" spacing={2}>
+          <Paper className={classes.paper}>
+            <Div1
+              style={{
+                backgroundImage: `url('${img}')`,
+              }}
+            >
+              {' '}
+              <IconButton>
+                <PlayCircleFilledIcon className={classes.icon} />
+              </IconButton>
+            </Div1>
 
-              <br />
-              <Title>{title}</Title>
-              <Title1>{singer}</Title1>
-            </Paper>
-          </Grid>
-        </Grid>
+            <br />
+            <Title>{title}</Title>
+            <Title>{singer}</Title>
+          </Paper>
+        </Grid1>
       </Grid>
     );
   });
   return (
     <>
       {' '}
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <Div>
         <Grid container spacing={5}>
           {renderList}
         </Grid>
-      </div>
+      </Div>
     </>
   );
 };
