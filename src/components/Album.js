@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import IconButton from '@material-ui/core/IconButton';
+import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +53,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Title = styled.h2`
+  font-size: 25;
+  font-weight:bold;
+  text-align: center;
+  color: white;
+  fontFamily: sans-serif;
+`;
+
+const Title1 = styled.h3`
+  font-size: 15;
+  text-align: center;
+  color: white;
+  fontFamily: sans-serif;
+  text-decoration:underline;
+
+`;
 const Album = () => {
   const classes = useStyles();
 
@@ -78,8 +95,8 @@ const Album = () => {
               </Paper>
 
               <br />
-              <Typography className={classes.album}>{title}</Typography>
-              <Typography className={classes.name}>{singer}</Typography>
+              <Title>{title}</Title>
+              <Title1>{singer}</Title1>
             </Paper>
           </Grid>
         </Grid>
